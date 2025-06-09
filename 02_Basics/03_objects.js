@@ -27,7 +27,7 @@ jsObject.age = 80;
 console.log(jsObject);
 
 jsObject.greeting = function(){
-    console.log("Hello JS Function");
+    console.log("Hello JS User " + this.fullname);
     
 }
 console.log(jsObject.greeting); //call reference
