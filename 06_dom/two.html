@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Tree Traversal</title>
+</head>
+<body style="background-color:black ; color:white">
+    <div class="parent">
+        <div class="child">Monday</div>
+        <div class="child">Tuesday</div>
+        <div class="child">Wednesday</div>
+        <div class="child">Thursday</div>
+    </div>
+</body>
+<script>
+    const parent = document.querySelector(".parent");
+    console.log(parent);
+    console.log(parent.children);
+   const children =  Array.from(parent.children);
+   console.log(children);
+   parent.firstElementChild.style.color = "orange";
+   console.log(parent.firstElementChild.innerHTML);  //in apps
+   console.log(parent.lastElementChild);
+//    console.log(parent.nextSibling);
+   console.log(parent.childNodes);  //takes every line break as an element react based on this 
+
+   
+</script>
+</html>
