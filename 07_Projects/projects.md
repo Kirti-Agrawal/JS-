@@ -11,7 +11,9 @@
 console.log('Kirti')
 ```
 
-## Project 2 Solution
+## Project 2 Solution (BMI Converter)
+
+[Click Here](https://stackblitz.com/edit/vitejs-vite-8e8bozz2?file=index.html)
 
 ```document.querySelector('form').addEventListener('submit', (e) => {
   e.preventDefault();
@@ -36,4 +38,18 @@ console.log('Kirti')
     }
   }
 });
+```
+
+## Project 3 Solution Code (Digital Clock)
+
+[Click Here](https://stackblitz.com/edit/vitejs-vite-ax3chuux?file=index.html)
+
+```
+const clock = document.getElementById('clock');
+
+setInterval(function () {
+  const date = new Date();
+  clock.innerHTML = `${date.toLocaleTimeString()}`;
+}, 1000);
+
 ```
