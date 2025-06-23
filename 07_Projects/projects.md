@@ -53,3 +53,95 @@ setInterval(function () {
 }, 1000);
 
 ```
+
+## Project 4 Solution Code (Guess The Number)
+
+```import './style.css';
+import javascriptLogo from './javascript.svg';
+import viteLogo from '/vite.svg';
+
+let randomNo = Math.floor(Math.random() * 100 + 1);
+const guess = document.getElementById('guessField');
+const submit = document.getElementById('submit');
+const prevGusses = document.querySelector('.prevGuesses');
+const guessesRem = document.querySelector('.guessesRem');
+const lowOrHi = document.querySelector('.lowOrHi');
+const resultsPara = document.querySelector('.resultsPara');
+
+let prevGuess = [];
+let playGame = true;
+let guessRe = 10;
+
+//for Start New Game
+const startOver = document.createElement('p');
+
+if (playGame) {
+  submit.addEventListener('click', function submitGuess(e) {
+    e.preventDefault();
+    validateGuess(parseInt(guess.value));
+  });
+}
+
+function validateGuess(guess) {
+  if (guess < 1 || guess > 100 || isNaN(guess)) {
+    alert('Please Enter Valid Number');
+  } else {
+    prevGuess.push(guess);
+    if (guessRe == 1) {
+      displayGuess(guess);
+      displayMessage(`Game Over ! Random Number was ${randomNo}`);
+      endGame();
+    } else {
+      displayGuess(guess);
+      guessCheck(guess);
+    }
+  }
+}
+
+function guessCheck(guess) {
+  if (guess == randomNo) {
+    displayMessage(`Congretulations ! You Guessed it Correctly`);
+    endGame();
+  } else if (guess < randomNo) {
+    displayMessage(`Your Guess is Too Low`);
+  } else {
+    displayMessage(`Your Guess is Too High`);
+  }
+}
+
+function displayGuess(guessNo) {
+  guessesRem.innerHTML = `${--guessRe}`;
+  guess.value = '';
+  prevGusses.innerHTML = `${prevGuess}`;
+}
+
+function displayMessage(message) {
+  lowOrHi.innerHTML = `${message}`;
+}
+
+function endGame() {
+  playGame = false;
+  guess.setAttribute('disabled', true);
+  submit.setAttribute('disabled', true);
+  startOver.classList.add('button');
+  startOver.innerHTML = `<h2 id = "newGame" >Start a New Game</h2>`;
+  resultsPara.appendChild(startOver);
+  newGame();
+}
+
+function newGame() {
+  const yesNewGame = document.querySelector('#newGame');
+  yesNewGame.addEventListener('click', function () {
+    playGame = true;
+    prevGuess = [];
+    guessRe = 10;
+    guessesRem.innerHTML = 10;
+    prevGusses.innerHTML = ``;
+    lowOrHi.innerHTML = ``;
+    resultsPara.removeChild(startOver);
+    guess.removeAttribute('disabled');
+    submit.removeAttribute('disabled');
+    randomNo = Math.floor(Math.random() * 100 + 1);
+  });
+}
+```
