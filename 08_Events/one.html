@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events Javascript</title>
+</head>
+<body>
+    <h2>Amazing Images</h2>
+    <div>
+        <ul id = "images">
+            <li><img src="https://images.pexels.com/photos/160994/family-outdoor-happy-happiness-160994.jpeg" width ="200px" alt="" id = "family"></li>
+            <li><img src="https://images.pexels.com/photos/1912868/pexels-photo-1912868.jpeg" width ="200px" alt="" id = "smile"></li>
+            <li><img src="https://images.pexels.com/photos/2659475/pexels-photo-2659475.jpeg" width ="200px" alt="travel" id = ""></li>
+            <li><img src="https://images.pexels.com/photos/792381/pexels-photo-792381.jpeg" width ="200px" alt="" id = "animal"></li>
+            <li><img src="https://images.pexels.com/photos/46216/sunflower-flowers-bright-yellow-46216.jpeg" width ="200px" alt="" id = "flower"></li>
+        <li>Google</li>
+        </ul>
+    </div>
+    <script>
+        //an object - follow sequential excecution but..
+
+        
+// document.getElementById('images').addEventListener('click',function(e){
+// console.log(e);
+// console.log('images clicked');
+// },false)
+
+// //Capturing  - phle parent clicked than child clicked - true
+// //Bubbling  - phle child clicked than parent clicked - false
+// // document.getElementById('smile').addEventListener('click',function(e){
+// // console.log(e);
+// // console.log('smile clicked');
+// // },true)   
+
+// //Stop Propagation
+// document.getElementById('smile').addEventListener('click',function(e){
+// e.stopPropagation();
+// console.log('smile clicked');
+// },false)   
+
+document.getElementById('images').addEventListener('click' , function(e){
+// console.log(e.target.parentNode); //On Which Node
+// e.target.parentNode.remove();//wrong sometimes
+if(e.target.tagName == 'IMG'){
+    e.target.parentNode.remove();
+}
+
+},false)
+    </script>
+</body>
+</html>
