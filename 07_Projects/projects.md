@@ -145,3 +145,34 @@ function newGame() {
   });
 }
 ```
+
+## Project 05 - Unlimited Background Colors 
+Solution Code
+
+```
+import './style.css';
+
+const createColor = function () {
+  const hex = '0123456789ABCDEF';
+  let randomColor = '#';
+  for (let i = 0; i < 6; i++) {
+    randomColor += hex[Math.floor(Math.random() * 16)];
+  }
+  return randomColor;
+};
+
+let intervalId;
+document.getElementById('start').addEventListener('click', function () {
+  if (!intervalId) {
+    intervalId = setInterval(() => {
+      let color = createColor();
+      document.body.style.backgroundColor = color;
+    }, 1000);
+  }
+});
+
+document.getElementById('stop').addEventListener('click', function () {
+  clearInterval(intervalId);
+  intervalId = null;
+});
+```
