@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web API - SetTimeout</title>
+</head>
+<body>
+    <h1>Web API - SetTimeout</h1>
+    <button id="stop">Stop</button>
+</body>
+<script>
+function showName(){
+    console.log('Kirti');
+    
+}
+function changeTitle(){
+    document.querySelector('h1').innerHTML = "02 Web API - SetTimeout";
+}
+
+ const refChangeTitle = setTimeout(changeTitle, 2000);
+
+ //if iwant to stop before execution or anycase wnat to handle it
+ document.querySelector('#stop').addEventListener('click', function(){
+     clearTimeout(refChangeTitle)
+    
+ })
+</script>
+</html>
