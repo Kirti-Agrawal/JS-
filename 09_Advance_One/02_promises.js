@@ -28,16 +28,63 @@ new Promise(function(resolve,reject){
 }).catch(function(){}).
 then(function(){})
 
-//
+
 const promiseThree = new Promise(function(resolve,reject){
     setTimeout(function(){
         console.log("Yes you are insidePromise");
-        resolve({username : "Kirti", id : "princess@divine.com"})
-        
+        const error = true;
+        if(!error){
+            resolve({username : "Kirti", id : "princess@divine.com"})
+        }
+else{
+    reject("Error, Something went Wrong!")
+}   
     },2000)
 })
 
-promiseThree.then((user)=>{
-console.log(user);
+// const users = promiseThree.then((user)=>{
+// return user;
 
-})
+// })
+// .then(function(data){
+//     console.log(data);
+    
+// })
+// .catch(function(error){
+// console.log(error);
+
+// })
+// .finally(function(){
+// console.log("It will execute either promise resolved or rejected");
+
+// })
+
+//Other way to handle async operations 
+
+async function consumePromiseThree(){
+ try {
+     const response =   await promiseThree;
+  console.log(response);
+ } catch (error) {
+    console.log(`Error : ${error}`);
+    
+ }
+  
+}
+consumePromiseThree();
+
+// fetch().then().catch().finally()
+
+async function consumePromiseFour(){
+try {
+      const apiUrl = 'https://api.github.com/users/hiteshchoudhary';
+    const response = await fetch(apiUrl);
+    console.log(await response.json());
+} catch (error) {
+    console.log(`Error : ${error}`);
+    
+}
+    
+}
+consumePromiseFour();
+
